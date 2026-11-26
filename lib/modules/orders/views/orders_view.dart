@@ -290,36 +290,54 @@ class OrdersView extends GetView<OrdersController> {
   }
 
   Widget _buildSummarySection() {
-    return Row(
+    return Column(
       children: [
-        Expanded(
-          child: OrderSummaryCard(
-            title: 'إجمالي الطلبات',
-            count: controller.totalOrdersCount,
-            icon: Icons.receipt_long_rounded,
-            iconColor: AppColors.primary,
-            iconBgColor: AppColors.secondary,
-          ),
+        Row(
+          children: [
+            Expanded(
+              child: OrderSummaryCard(
+                title: 'إجمالي الطلبات',
+                count: controller.totalOrdersCount,
+                icon: Icons.receipt_long_rounded,
+                iconColor: AppColors.primary,
+                iconBgColor: AppColors.secondary,
+              ),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: OrderSummaryCard(
+                title: 'الطلبات النشطة',
+                count: controller.activeOrdersCount,
+                icon: Icons.local_shipping_rounded,
+                iconColor: AppColors.warning,
+                iconBgColor: AppColors.warningSoft,
+              ),
+            ),
+          ],
         ),
-        const SizedBox(width: 10),
-        Expanded(
-          child: OrderSummaryCard(
-            title: 'الطلبات النشطة',
-            count: controller.activeOrdersCount,
-            icon: Icons.local_shipping_rounded,
-            iconColor: AppColors.warning,
-            iconBgColor: AppColors.warningSoft,
-          ),
-        ),
-        const SizedBox(width: 10),
-        Expanded(
-          child: OrderSummaryCard(
-            title: 'تم تسليمها',
-            count: controller.deliveredOrdersCount,
-            icon: Icons.check_circle_rounded,
-            iconColor: AppColors.success,
-            iconBgColor: AppColors.successSoft,
-          ),
+        const SizedBox(height: 10),
+        Row(
+          children: [
+            Expanded(
+              child: OrderSummaryCard(
+                title: 'تم تسليمها',
+                count: controller.deliveredOrdersCount,
+                icon: Icons.check_circle_rounded,
+                iconColor: AppColors.success,
+                iconBgColor: AppColors.successSoft,
+              ),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: OrderSummaryCard(
+                title: 'طلبات ملغية',
+                count: controller.cancelledOrdersCount,
+                icon: Icons.cancel_rounded,
+                iconColor: AppColors.error,
+                iconBgColor: AppColors.errorSoft,
+              ),
+            ),
+          ],
         ),
       ],
     );

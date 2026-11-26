@@ -21,6 +21,10 @@ class OrdersController extends GetxController {
   int get deliveredOrdersCount =>
       orders.where((order) => order.status == OrderStatus.delivered).length;
 
+
+   int get cancelledOrdersCount =>
+     orders.where((order) => order.status == OrderStatus.cancelled).length;
+
   @override
   void onInit() {
     super.onInit();

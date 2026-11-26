@@ -166,11 +166,19 @@ class OrderTimelineRecord {
   });
 
   factory OrderTimelineRecord.fromJson(Map<String, dynamic> json) {
-    return OrderTimelineRecord(
-      step: json['step'] as String? ?? '',
-      at: json['at'] != null ? DateTime.tryParse(json['at'] as String) : null,
-    );
-  }
+  final rawStep = json['step'] as String? ?? '';
+  final normalizedStep = switch (rawStep) {
+    'استلمنا الطلب' => 'تم استلام الطلب',
+    'خرج مع المندوب' => 'خرج الطلب للتوصيل',
+    'تم التوصيل' => 'تم تسليم الطلب',
+    _ => rawStep,
+  };
+
+  return OrderTimelineRecord(
+    step: normalizedStep,
+    at: json['at'] != null ? DateTime.tryParse(json['at'] as String) : null,
+  );
+}
 
   Map<String, dynamic> toJson() => {
         'step': step,
