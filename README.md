@@ -46,10 +46,9 @@ A key feature of the application is its **offline-first experience**, allowing c
 | Flutter | Cross-platform mobile development |
 | Dart | Programming language |
 | GetX | State management and navigation |
-| Dio | HTTP client and API requests |
 | GetStorage | Local data persistence |
 | connectivity_plus | Network connectivity monitoring |
-| Material 3 | UI components and design system |
+
 
 ---
 
@@ -113,8 +112,6 @@ Displays order items, delivery information, payment summary, and delivery progre
 - Push notifications for order status changes.
 - Google Maps integration.
 - Customer authentication.
-- Multi-language support.
-- Improved background synchronization.
 
 ---
 
